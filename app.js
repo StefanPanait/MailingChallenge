@@ -12,9 +12,50 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-app.get('/', function(request, response) {
-    response.send('Hello World!')
-})
+app.get('/', function(req, res) {
+    console.log("root");
+    res.send("<a href='/'>Click here</a> in a minute, server is re-starting ");
+    /*    var dayCount = database.getDayCount();
+    database.countMailingtable(function(err, emailCount) {
+        database.updateReport(function(domains) {
+            res.render('report', {
+                domains: domains,
+                emailCount: emailCount,
+                dayCount: dayCount
+            });
+        });
+    });*/
+});
+
+app.get('/passTime', function(req, res) {
+    console.log("passing time");
+    database.passTime(function() {
+        database.updateDomainsTable(function() {
+            res.redirect("/");
+
+        });
+    });
+
+});
+
+app.get('/updateReport', function(req, res) {
+    res.redirect("/");
+});
+
+
+app.get('/emails', function(req, res) {
+    database.getAllEmails(function(err, rows) {
+        if (err) console.log(err);
+        res.render("emails", {
+            emails: rows
+        });
+    });
+});
+
+app.get('/clearSimulation', function(req, res) {
+    //database.createTables();
+    res.send("<a href='/'>Click here</a> in a minute, server is re-starting ");
+});
 
 app.listen(app.get('port'), function() {
     console.log("Node app is running at localhost:" + app.get('port'))
