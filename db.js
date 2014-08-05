@@ -31,7 +31,7 @@ database.createDomainsTable = function() {
             date_entered TEXT);",
             function(err) {
                 if (err) console.log(err);
-                database.passTime(null, 50); //init db with 40 days of history
+                database.passTime(null, 30); //init db with 40 days of history
             });
     });
 }
