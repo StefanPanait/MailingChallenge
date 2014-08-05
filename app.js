@@ -11,7 +11,9 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res) {
-    var dayCount = database.getDayCount();
+    console.log("root");
+    res.send("<a href='/'>Click here</a> in a minute, server is re-starting ");
+    /*    var dayCount = database.getDayCount();
     database.countMailingtable(function(err, emailCount) {
         database.updateReport(function(domains) {
             res.render('report', {
@@ -20,7 +22,7 @@ app.get('/', function(req, res) {
                 dayCount: dayCount
             });
         });
-    });
+    });*/
 });
 
 app.get('/passTime', function(req, res) {
@@ -49,7 +51,7 @@ app.get('/emails', function(req, res) {
 });
 
 app.get('/clearSimulation', function(req, res) {
-    database.createTables();
+    //database.createTables();
     res.send("<a href='/'>Click here</a> in a minute, server is re-starting ");
 });
 var server = app.listen(3000, function() {
