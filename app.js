@@ -54,6 +54,6 @@ app.get('/clearSimulation', function(req, res) {
 });
 var server = app.listen(3000, function() {
     console.log("init db");
-    database.init();
+    //database.init();
     console.log('Listening on port %d', server.address().port);
 });
