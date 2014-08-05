@@ -3,6 +3,9 @@
     "description": "technical test for casale",
     "version": "0.0.1",
     "private": true,
+    "scripts": {
+        "start": "node app.js"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/StefanPanait/MailingChallenge.git"
